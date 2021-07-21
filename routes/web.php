@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Requests;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+$router->get('/', function() {
+	return view('home');
+});
+$router->get('/auth', function () {
+    return view('auth');
+});
+$router->group(['middleware' => 'auth.api'], function() use($router) {
+	$router->get('/home', function () {
+        return view('home');
+    });
+});
+$router->group(["prefix"=>"api"], function() use ($router) {
+    $router->post('/auth', [Requests::class, "auth"]);
 });
