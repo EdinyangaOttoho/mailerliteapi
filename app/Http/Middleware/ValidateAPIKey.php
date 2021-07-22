@@ -16,14 +16,16 @@ class ValidateAPIKey
             return $next($request);//A valid session is already on!
         }
         else {
-            $api = DB::table("server")->where("id", "1")->first(); //Check table first
+            $api = DB::table("server")->where("id", "1")->first(); //Check table first if exists
             if ($api->api_key == "0") {
                 return redirect("/auth");//No present key!
             }
             else {
                 session(["apikey"=>$api->api_key]);//set session to database API key
+                session(["group"=>$api->subscriber_group]);//set session to database API key
                 return $next($request);
             }
         }
+        return $next($request);
     }
 }

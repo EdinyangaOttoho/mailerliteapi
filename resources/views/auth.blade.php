@@ -29,9 +29,7 @@
             <div class="row">
                 <div class="column">
                     <div class="card-div">
-                        <!--Authorization FORM with CSRF Token -->
                         <form class="ui form" action="/api/auth" method="POST" id="api_form">
-                            {{ csrf_field() }}
                             <h3>Authorize your API Key</h3>
                             <span style="font-size:12px;color:gray">Provide your MailerLite API key for access!</span>
                             <input name="apikey" class="ui input" placeholder="Enter API key here" style="margin-top:15px;display:block;color:steelblue" maxlength="" required/>
@@ -45,7 +43,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         @include('components.alerts')
         <script>
-            document.getElementById("api_form").onsubmit = function() {
+            document.getElementById("api_form").onsubmit = function(event) {
                 event.preventDefault();
                 var formdata = new FormData(this);
                 var xhttp;
@@ -64,6 +62,7 @@
                             toastr.error(json.message, "Error", {progressBar:true});
                         }
                         else {
+                            //Redirect on success
                             location.href = "/home";
                         }
                     }
