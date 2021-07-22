@@ -48,7 +48,7 @@
                                             <td style="color:cornflowerblue;cursor:pointer" data-label="email" onclick="edit_subscriber(`<?php echo $i['name']; ?>`,`<?php echo $i['email']; ?>`,`<?php echo $country; ?>`,`<?php echo $i['id']; ?>`)"><?php echo $i["email"]; ?></td>
                                             <td data-label="country"><?php echo $country; ?></td>
                                             <td style="width:100px">
-                                                <?php echo date("Y-m-d", strtotime($i["date_subscribe"])); ?>
+                                                <?php echo date("d-m-Y", strtotime($i["date_subscribe"])); ?>
                                             </td>
                                             <td style="width:100px">
                                                 <?php echo date("H:i", strtotime($i["date_subscribe"])); ?>
