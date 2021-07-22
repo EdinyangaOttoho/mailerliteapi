@@ -26,6 +26,8 @@ Once that is done, you can navigate to the project root directory and type:
 php artisan serve
 ```
 
+Visit your browser and visit http://127.0.0.1:8000/ to access the project anytime you wish!
+
 
 
 Congratulations. You have a basic setup of the MailerLite HTTP Client!!
