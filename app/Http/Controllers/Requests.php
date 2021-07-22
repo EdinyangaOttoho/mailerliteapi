@@ -45,6 +45,10 @@ class Requests extends Controller
         ]);
 
         if($validator->fails()) {
+            if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+                return json_encode(["status"=>"error", "Invalid email provided!"]);
+                die;
+            }
             return json_encode(["status"=>"error", "No field must be left blank"]);
         } else {
             $apikey = session("apikey");
@@ -143,7 +147,7 @@ class Requests extends Controller
     public function subscribers(Request $request) {
         $apikey = session("apikey");
         $group = session("group");
-        
+
         $this->request("/groups/$group/subscribers", [], "GET", $apikey);
         //Get subscribers
         $response = $this->api_response;

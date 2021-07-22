@@ -28,7 +28,8 @@
                                     <th>Name</th>
                                     <th>Email Address</th>
                                     <th>Country</th>
-                                    <th>Date</th>
+                                    <th>Subscribe date</th>
+                                    <th>Subscribe time</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -47,7 +48,10 @@
                                             <td style="color:cornflowerblue;cursor:pointer" data-label="email" onclick="edit_subscriber(`<?php echo $i['name']; ?>`,`<?php echo $i['email']; ?>`,`<?php echo $country; ?>`,`<?php echo $i['id']; ?>`)"><?php echo $i["email"]; ?></td>
                                             <td data-label="country"><?php echo $country; ?></td>
                                             <td style="width:100px">
-                                                <?php echo date("Y-m-d H:i", strtotime($i["date_created"])); ?>
+                                                <?php echo date("Y-m-d", strtotime($i["date_subscribe"])); ?>
+                                            </td>
+                                            <td style="width:100px">
+                                                <?php echo date("H:i", strtotime($i["date_subscribe"])); ?>
                                             </td>
                                             <td data-label="edit-action" style="width:50px">
                                                 <button class="ui red button tiny" onclick="delete_subscriber('<?php echo $i['id']; ?>')"><i class="trash icon"></i></button>

@@ -19,7 +19,7 @@ $router->get('/auth', function () {
 });
 $router->get('/terminate', function (Request $request) {
     $request->session()->flush();
-    DB::table("server")->where("id", "1")->update(["api_key"=>"0", "date_created"=>"0", "date_updated"=>"0", "subscriber_group"=>NULL]);
+    DB::table("server")->where("id", "1")->update(["api_key"=>"0", "date_created"=>"0", "date_updated"=>"0", "subscriber_group"=>"0"]);
     //Logout user and reset the server table::
     return redirect("/auth");
 });
